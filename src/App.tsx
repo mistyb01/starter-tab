@@ -47,9 +47,7 @@ const App:FC = () => {
           />
           <Route path='/demo'
             element={
-              <Demo 
-                bookmarkData={bookmarkData} 
-                updateBookmarkData={updateBookmarkData}/>
+              <Demo />
             }/>
         </Routes>
     </div>

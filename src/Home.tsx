@@ -3,7 +3,7 @@ import Bookmarks from './Bookmarks';
 import Tags from './Tags';
 import Categories from './Categories';
 import { BookmarkType } from './@types/app';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface Props {
   bookmarkData: BookmarkType[]
@@ -14,6 +14,7 @@ export const Home: React.FC<Props> = (props) => {
   const categoryList = Array.from(new Set(props.bookmarkData.map(bookmark => bookmark.category)));
   const [category, setCategory] = useState(categoryList[0]);
   const [tag, setTag] = useState('all');
+  const location = useLocation();
 
   function handleCategoryChange(e: React.MouseEvent<HTMLButtonElement>) {
     setCategory(e.currentTarget.id);
@@ -32,14 +33,14 @@ export const Home: React.FC<Props> = (props) => {
    <>
     <header>
           <h1 className="header-logo">web collector</h1>
-            {localStorage.getItem('bookmarkData') !== null &&
+            {(localStorage.getItem('bookmarkData') !== null || location.pathname === '/demo') &&
           <div className="horizontal-space">
             <Link to='/add'><button className="header__button">add bookmark</button></Link>
             <Link to='/edit'><button className="header__button">edit</button></Link>
           </div>}
     </header>
     <main className="home-container horizontal-space">
-    {localStorage.getItem('bookmarkData') !== null ?
+    {(localStorage.getItem('bookmarkData') !== null || location.pathname === '/demo') ?
     <>
     <div className="filter-menu">
         <h3 className="filter-menu__header">categories</h3>

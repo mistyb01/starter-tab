@@ -10,17 +10,17 @@ import Home from './Home';
 
 
 interface Props {
-    bookmarkData: BookmarkType[],
-    updateBookmarkData: Function
+
   }
   
 export const Demo: React.FC<Props> = (props) => {
+  const [demoBookmarkData, setDemoData] = useState(demoData)
     useEffect(() => {
-        props.updateBookmarkData(demoData);
+        // props.updateBookmarkData(demoData);
     }, []);
 
   return (
-    <Home bookmarkData={demoData}/>
+    <Home bookmarkData={demoBookmarkData}/>
   );
 }
 
