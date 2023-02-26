@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { FC } from 'react';
 import { BookmarkType } from './@types/app';
 import AddBookmark from './AddBookmark';
-import mockData from './data/static-data';
+import {mockData, demoData} from './data/static-data';
 import { useLocalStorage } from 'usehooks-ts';
 import EditMode from './edit-mode/EditMode';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
+import { Demo } from './Demo';
 
 const App:FC = () => {
   
@@ -44,6 +45,12 @@ const App:FC = () => {
                 bookmarkData={bookmarkData} 
                 updateBookmarkData={updateBookmarkData}/>}
           />
+          <Route path='/demo'
+            element={
+              <Demo 
+                bookmarkData={bookmarkData} 
+                updateBookmarkData={updateBookmarkData}/>
+            }/>
         </Routes>
     </div>
   );
